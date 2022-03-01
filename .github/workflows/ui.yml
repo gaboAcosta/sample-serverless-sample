@@ -1,0 +1,59 @@
+
+name: ui
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'ui/**'
+defaults:
+  run:
+    working-directory: ui
+
+jobs:
+  ui-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v2.1.0
+        with:
+          path: |
+            ~/.yarn-cache
+            **/node_modules
+          key: sample_serverless_project_ui_${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+#     Enable this when deploying to an actual environment
+
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: us-west-1
+#
+#      - name: Copy files to S3
+#        run: aws s3 cp --acl public-read --recursive build/ s3://sample-serverless-project
+#
+#      - name: Invalidate CloudFront
+#        uses: awact/cloudfront-action@master
+#        env:
+#          SOURCE_PATH: '/*'
+#          AWS_REGION: 'us-west-1'
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}

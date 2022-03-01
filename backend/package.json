@@ -1,0 +1,38 @@
+{
+  "name": "sample-serverless-project-backend",
+  "version": "1.0.0",
+  "description": "A sample serverless project backend",
+  "main": "handler.js",
+  "scripts": {
+    "start": "node ./node_modules/.bin/serverless offline start --stage local",
+    "deploy": "node ./node_modules/.bin/serverless deploy --stage",
+    "storage": "docker-compose  -p 'sample-serverless-project' up -d",
+    "storage:stop": "docker-compose  -p 'sample-serverless-project' stop",
+    "storage:destroy": "docker-compose  -p 'sample-serverless-project' down",
+    "migrate": "yarn wait-for-mysql && node bin/migrate.js",
+    "wait-for-mysql": "wait-for-mysql --username=admin --password=admin -D 'sample-serverless-project'",
+    "migrate:generate": "sequelize migration:generate --name"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "glob": "^7.2.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.2",
+    "serverless": "^3.2.1",
+    "serverless-http": "^2.7.0",
+    "serverless-offline": "^8.5.0",
+    "umzug": "^3.0.0",
+    "wait-for-mysql": "^1.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1",
+    "tunnel-ssh": "^4.1.6"
+  }
+}

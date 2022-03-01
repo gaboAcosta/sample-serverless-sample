@@ -1,0 +1,34 @@
+
+service: sample-serverless-project-api
+
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    DISABLE_LOGIN: ${env:DISABLE_LOGIN, 'false'}
+    TOKEN_SECRET: ${env:TOKEN_SECRET}
+    MYSQL_USER: ${env:MYSQL_USER, ''}
+    MYSQL_PASSWORD: ${env:MYSQL_PASSWORD, ''}
+    MYSQL_HOST: ${env:MYSQL_HOST, ''}
+  vpc:
+    securityGroupIds: ${env:SECURITY_GROUP_ID, ''}
+    subnetIds: ${env:SUBNET_IDS, ''}
+functions:
+  app:
+    handler: handler.appHandler
+    events:
+      - http: ANY /
+      - http: 'ANY /{proxy+}'
+  migrate:
+    handler: handler.migrate
+    timeout: 300
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 7001
