@@ -38,8 +38,8 @@ the `TOKEN_SECRET` environment variable to generate the JWT tokens
 4. Register the service on the service factory in backend/src/services/factory.js
 5. Add a controller on backend/src/controllers
 6. Add validations for your CRUD requests in backend/src/validations/${entityName}.js
-6. Add an express router in backed/src/routes/${entityName}.js
-7. Register the router on backend/src/router.js
+7. Add an express router in backed/src/routes/${entityName}.js
+8. Register the router on backend/src/router.js
 
 ### UI
 1. Create a service to send the request to the backend in ui/src/services
