@@ -48,3 +48,6 @@ the `TOKEN_SECRET` environment variable to generate the JWT tokens
 4. Add a CRUD component to your view, you can use the user view as reference
 5. Register the view in the ui/src/App.js router
 6. Update the header in ui/src/components/Header.js to add a link to your view
+
+You can find an example here:
+https://github.com/gaboAcosta/sample-serverless-sample/pull/1/files
