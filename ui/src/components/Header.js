@@ -27,6 +27,7 @@ function Header () {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Link to="/users" className={'nav-link'}>Users</Link>
+          <Link to="/accounts" className={'nav-link'}>Accounts</Link>
           <Link to="/" className={'nav-link'}>Reports</Link>
           <Button
             variant={"secondary"}

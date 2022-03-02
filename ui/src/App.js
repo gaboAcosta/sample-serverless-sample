@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./views/Login";
 import Reports from "./views/Reports";
 import Users from "./views/Users";
+import Accounts from "./views/Accounts"
 import React from "react";
 import { getToken } from "./utils/session"
 
@@ -20,6 +21,7 @@ export default class App extends React.Component {
           <Routes>
             <Route path="/" element={<Reports />}></Route>
             <Route path="/users" element={<Users />} />
+            <Route path="/accounts" element={<Accounts />} />
           </Routes>
         </Container>
       </BrowserRouter>

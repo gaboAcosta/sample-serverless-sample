@@ -7,6 +7,7 @@ const usersRouter = require('./routes/usersRouter')
 const healthRouter = require('./routes/healthRouter')
 const authRouter = require('./routes/authRouter')
 const sessionRouter = require('./routes/sessionRouter')
+const accountsRouter = require('./routes/accountsRouter')
 
 // This are public endpoints
 router.use('/health', healthRouter)
@@ -16,5 +17,6 @@ router.use('/auth', authRouter)
 router.use(ensureAuthenticated())
 router.use('/session', sessionRouter)
 router.use('/users', usersRouter)
+router.use('/accounts', accountsRouter)
 
 module.exports = router
