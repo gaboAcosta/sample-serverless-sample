@@ -37,12 +37,14 @@ the `TOKEN_SECRET` environment variable to generate the JWT tokens
 3. Add a Service to handle the CRUD in backend/src/services
 4. Register the service on the service factory in backend/src/services/factory.js
 5. Add a controller on backend/src/controllers
+6. Add validations for your CRUD requests in backend/src/validations/${entityName}.js
 6. Add an express router in backed/src/routes/${entityName}.js
 7. Register the router on backend/src/router.js
 
 ### UI
-1. Add a model for the CRUD controller in ui/src/models
-2. Add a view in ui/src/views
-3. Add a CRUD component to your view, you can use the user view as reference
-4. Register the view in the ui/src/App.js router
-5. Update the header in ui/src/components/Header.js to add a link to your view
+1. Create a service to send the request to the backend in ui/src/services
+2. Add a model for the CRUD controller in ui/src/models
+3. Add a view in ui/src/views
+4. Add a CRUD component to your view, you can use the user view as reference
+5. Register the view in the ui/src/App.js router
+6. Update the header in ui/src/components/Header.js to add a link to your view
