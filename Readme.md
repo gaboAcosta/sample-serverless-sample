@@ -33,14 +33,16 @@ the `TOKEN_SECRET` environment variable to generate the JWT tokens
 
 ### Backend
 1. Add a migration for your new resource running the following command: `yarn migrate:generate ${nameOfYourResource}`
-2. Add a Service to handle the CRUD in backend/src/services
-3. Register the service on the service factory in backend/src/services/factory.js
-4. Add a controller on backend/src/controllers
-5. Add an express router in backed/src/routes/${entityName}.js
-6. Register the router on backend/src/router.js
+2. Add a model to map your table in backend/src/models
+3. Add a Service to handle the CRUD in backend/src/services
+4. Register the service on the service factory in backend/src/services/factory.js
+5. Add a controller on backend/src/controllers
+6. Add an express router in backed/src/routes/${entityName}.js
+7. Register the router on backend/src/router.js
 
 ### UI
-1. Add a view in ui/src/views
-2. Add a CRUD component to your view, you can use the user view as reference
-3. Register the view in the ui/src/App.js router
-4. Update the header in ui/src/components/Header.js to add a link to your view
+1. Add a model for the CRUD controller in ui/src/models
+2. Add a view in ui/src/views
+3. Add a CRUD component to your view, you can use the user view as reference
+4. Register the view in the ui/src/App.js router
+5. Update the header in ui/src/components/Header.js to add a link to your view
