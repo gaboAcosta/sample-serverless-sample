@@ -6,8 +6,13 @@ import CRUDModal from "./CRUDModal";
 import EntitiesTable from "./EntitiesTable";
 import { capitalize } from "../../utils/strings"
 import FetchMessage from "./FetchMessage";
-import { resetStateFactory } from "../../utils/state"
 import { getDefaultEntity } from "../../utils/entities"
+
+function resetStateFactory (defaultState, setState) {
+  return function (overrides = {}) {
+    setState({ ...defaultState, ...overrides })
+  }
+}
 
 function loadEntities (dataSource, state, setState, setEntities) {
   return async function () {
