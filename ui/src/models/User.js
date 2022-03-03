@@ -1,5 +1,6 @@
 
 import Field from "../components/CRUD/Field";
+import FieldAction from "../components/CRUD/FieldAction";
 
 export default class User {
   static getFields () {
@@ -27,6 +28,16 @@ export default class User {
         editDisabled: true,
         displayInTable: false
       })
+    ]
+  }
+  static getExtraActions() {
+    return [
+      new FieldAction(
+        (entity) => {
+          window.location.href = `/user/${entity.id}/logs`
+        },
+        'FaMoneyBillWaveAlt'
+      )
     ]
   }
 }

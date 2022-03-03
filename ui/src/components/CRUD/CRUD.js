@@ -39,7 +39,8 @@ export default function CRUD (props) {
     dataSource,
     onCreate,
     onUpdate,
-    onDelete
+    onDelete,
+    extraActions = []
   } = props
 
   const loadEntitiesFunction = loadEntities(dataSource, state, setState, setEntities)
@@ -96,6 +97,7 @@ export default function CRUD (props) {
       <EntitiesTable
         showEdit={showEdit}
         showDelete={showDelete}
+        extraActions={extraActions}
         entities={entities}
         fields={fields}/>
 
@@ -105,7 +107,7 @@ export default function CRUD (props) {
       </Button>
 
       <FetchMessage
-        fetching={isFetching}
+        isFetching={isFetching}
         plural={plural}/>
 
       <CRUDModal
