@@ -184,6 +184,8 @@ module.exports = {
 13. Create a model to connect to the DB in backend/src/models
 14. Add the model in the service configuration of the ServiceFactory
 15. Update the service to use the model instead of the stubbed responses
+16. Test with CURL or Postman that the endpoints work as expected
+17. Add validations to the POST and PUT methods
 
 ### UI
 1. Create a service to send the request to the backend in ui/src/services
