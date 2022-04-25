@@ -79,10 +79,10 @@ function destroyThing (req, res) => {
 }
 
 module.exports = {
-	listThings,
-	createTHing,
-	updateThing,
-	destroyThing
+  listThings,
+  createTHing,
+  updateThing,
+  destroyThing
 }
 
 ```
@@ -110,18 +110,18 @@ module.exports = router
 
 ```
 class MyResourceService {
-	listThings () {
-		return [{ id: 3584 }]
-	}
-	createThing (thing) {
-		return { id: 8654 }
-	}
-	updateThing (thingId, thing) {
-		return 1
-	}
-	destroyThing(thingId, thing) {
-		return 1
-	}
+  listThings () {
+    return [{ id: 3584 }]
+  }
+  createThing (thing) {
+    return { id: 8654 }
+  }
+  updateThing (thingId, thing) {
+     return 1
+  }
+  destroyThing(thingId, thing) {
+    return 1
+  }
 }
 
 module.exports = MyResourceService
@@ -175,10 +175,10 @@ function destroyThing (req, res) => {
 }
 
 module.exports = {
-	listThings,
-	createTHing,
-	updateThing,
-	destroyThing
+  listThings,
+  createTHing,
+  updateThing,
+  destroyThing
 }
 ```
 13. Create a model to connect to the DB in backend/src/models
