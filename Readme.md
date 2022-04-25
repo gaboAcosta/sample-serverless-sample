@@ -135,8 +135,8 @@ const ServiceFactory = require('path/to/service/factory')
 async function listThings (req, res) {
   try {
     const service = ServiceFactory.getService('things')
-	const things await service.listThings()
-	res.json(things)
+    const things await service.listThings()
+    res.json(things)
   } catch (ex) {
     res.status(500).send(JSON.stringify(ex))
   }
@@ -145,8 +145,8 @@ async function listThings (req, res) {
 function createThing (req, res) {
   try {
     const service = ServiceFactory.getService('things')
-	const thing await service.createThing(req.body)
-	res.json(thing)
+  	const thing await service.createThing(req.body)
+	  res.json(thing)
   } catch (ex) {
     res.status(500).send(JSON.stringify(ex))
   }
@@ -156,8 +156,8 @@ function updateThing (req, res) => {
   try {
   	const { id } = req.params
     const service = ServiceFactory.getService('things')
-	const things await service.updateThing(id, req.bdoy)
-	res.json(things)
+	  const things await service.updateThing(id, req.bdoy)
+	  res.json(things)
   } catch (ex) {
     res.status(500).send(JSON.stringify(ex))
   }
@@ -167,8 +167,8 @@ function destroyThing (req, res) => {
   try {
   	const { id } = req.params
     const service = ServiceFactory.getService('things')
-	const things await service.destroyThing(id)
-	res.json(things)
+	  const things await service.destroyThing(id)
+	  res.json(things)
   } catch (ex) {
     res.status(500).send(JSON.stringify(ex))
   }
