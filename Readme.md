@@ -63,7 +63,7 @@ module.exports = router
 6. Move the callbacks from the route to the controller, it should look a little bit like this
 ```
 function listThings (req, res) {
-	res.send('GET')
+  res.send('GET')
 }
 
 function createThing (req, res) {
