@@ -48,7 +48,7 @@ export default function CRUD (props) {
       console.log('ex', ex)
       alert('Error loading dataSource in CRUD component')
     })
-  }, [])
+  }, [state.reload])
 
   const showEdit = (entity) => {
     resetStateFunction({
@@ -71,7 +71,7 @@ export default function CRUD (props) {
     })
   }
 
-  const onCreateOrUpdateHandler = async (entity) => {
+  const onCreateOrUpdateHandler = async (entity, action) => {
     if (action === 'create') await onCreate(entity)
     if (action === 'update') await onUpdate(entity)
     resetStateFunction({ reload: !state.reload })

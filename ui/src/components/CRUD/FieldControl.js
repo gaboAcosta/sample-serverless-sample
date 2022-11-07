@@ -15,6 +15,7 @@ const getFieldValue = (fieldName, entity) => {
 }
 
 export const getFieldControl = (field, isCreate, entity, onChange) => {
+    const { name } = field
     const disabled = getIsDisabled(field, isCreate)
     const fieldValue = getFieldValue(name, entity)
     if (field.type === 'date') {

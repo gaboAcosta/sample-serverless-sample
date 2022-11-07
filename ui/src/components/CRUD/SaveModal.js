@@ -21,7 +21,7 @@ const SaveModal = (props) => {
     const [currentEntity, setCurrentEntity] = useState({ ...entity })
 
     return (
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={(entity) => onSubmit(entity, action)}>
             <Modal
                 show={true}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -53,7 +53,7 @@ const SaveModal = (props) => {
                         variant="success"
                         type="submit"
                         onClick={() => {
-                            onSubmit(currentEntity)
+                            onSubmit(currentEntity, action)
                         }}>
                         { isCreate ? 'Create' : 'Update' }
                     </Button>
