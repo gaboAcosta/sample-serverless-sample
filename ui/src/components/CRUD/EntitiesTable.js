@@ -1,7 +1,6 @@
 import Table from "react-bootstrap/Table";
 import React from "react";
 import ColumnHeaders from "./ColumnHeaders";
-import ActionsHeader from "./ActionsHeader";
 import FieldColumns from "./FieldColumns";
 import Button from "react-bootstrap/Button";
 import {FaEdit, FaTrash} from "react-icons/fa";
@@ -20,7 +19,7 @@ export default function EntitiesTable (props) {
       <thead>
       <tr id={'table-headers'}>
         <ColumnHeaders fields={fields} />
-        <ActionsHeader />
+        <th key={'header-actions'} style={{ textAlign: 'center' }}>Actions</th>
       </tr>
       </thead>
       <tbody>

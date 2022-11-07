@@ -6,11 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from "react-router-dom";
 
-function logout() {
+const logout = () => {
   sessionStorage.setItem('token', '');
 }
 
-function Header () {
+const Header = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
   if (redirectToLogin) {
     logout()
@@ -20,14 +20,13 @@ function Header () {
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>
         <Link to="/" className={'navbar-brand'}>
-          Sample serverless project!
+          e-nventario
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Link to="/users" className={'nav-link'}>Users</Link>
-          <Link to="/" className={'nav-link'}>Reports</Link>
           <Button
             variant={"secondary"}
             style={{ position: 'fixed', right: '1em' }}

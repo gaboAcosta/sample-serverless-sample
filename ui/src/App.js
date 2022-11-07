@@ -1,28 +1,28 @@
+import React from "react";
 import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./views/Login";
-import Reports from "./views/Reports";
-import Users from "./views/Users";
-import React from "react";
+import Home from "./views/Home";
+import UsersView from "./views/usersView";
 import { getToken } from "./utils/session"
 
 
-export default class App extends React.Component {
-  render() {
+const App = () => {
     const token = getToken()
     if (!token) return <Login />
     return (
-      <BrowserRouter>
-        <Header />
-        <br/>
-        <Container>
-          <Routes>
-            <Route path="/" element={<Reports />}></Route>
-            <Route path="/users" element={<Users />} />
-          </Routes>
-        </Container>
-      </BrowserRouter>
+        <BrowserRouter>
+            <Header />
+            <br/>
+            <Container>
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/users" element={<UsersView />} />
+                </Routes>
+            </Container>
+        </BrowserRouter>
     )
-  }
 }
+
+export default App
