@@ -1,7 +1,7 @@
 
 
 import Button from "react-bootstrap/Button";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CRUDModal from "./CRUDModal";
 import EntitiesTable from "./EntitiesTable";
 import { capitalize } from "../../utils/strings"
@@ -14,25 +14,16 @@ function resetStateFactory (defaultState, setState) {
   }
 }
 
-function loadEntities (dataSource, state, setState, setEntities) {
-  return async function () {
-    setState({ ...state, isFetching: true })
-    const entities = await dataSource()
-    setState({ ...state, isFetching: false })
-    setEntities(entities)
-  }
-}
-
 const defaultState = {
   entity: {},
   isFetching: false,
-  action: null
+  action: null,
+  reload: false
 }
 
 export default function CRUD (props) {
   const [state, setState] = useState(defaultState)
   const [entities, setEntities] = useState([])
-  const [needsInitialization, setNeedsInitialization] = useState(true)
   const { action, entity, isFetching } = state
 
   const resetStateFunction = resetStateFactory(defaultState, setState)
@@ -48,49 +39,50 @@ export default function CRUD (props) {
     extraActions = []
   } = props
 
-  const loadEntitiesFunction = loadEntities(dataSource, state, setState, setEntities)
+  useEffect(() => {
+    setState({ ...state, isFetching: true })
+    dataSource().then((entities) => {
+      setState({ ...state, isFetching: false })
+      setEntities(entities)
+    }).catch((ex) => {
+      console.log('ex', ex)
+      alert('Error loading dataSource in CRUD component')
+    })
+  }, [state.reload])
 
-  if (needsInitialization) {
-    setNeedsInitialization(false)
-    loadEntitiesFunction()
-  }
-
-
-  function showEdit(entity) {
+  const showEdit = (entity) => {
     resetStateFunction({
       action: 'update',
       entity: entity
     })
   }
 
-  function showDelete (entity) {
+  const showDelete =  (entity) => {
     resetStateFunction({
       action: 'delete',
       entity: entity
     })
   }
 
-  function showCreate () {
+  const showCreate = () => {
     resetStateFunction({
       action: 'create',
       entity: getDefaultEntity(fields)
     })
   }
 
-  async function onCreateOrUpdateHandler (entity) {
+  const onCreateOrUpdateHandler = async (entity, action) => {
     if (action === 'create') await onCreate(entity)
     if (action === 'update') await onUpdate(entity)
-    await loadEntitiesFunction()
-    resetStateFunction({})
+    resetStateFunction({ reload: !state.reload })
   }
 
-  async function onDeleteHandler (entity) {
+  const onDeleteHandler = async (entity) => {
     await onDelete(entity)
-    await loadEntitiesFunction()
-    resetStateFunction()
+    resetStateFunction({ reload: !state.reload })
   }
 
-  function onCancelHandler () {
+  const onCancelHandler = () => {
     resetStateFunction()
   }
 

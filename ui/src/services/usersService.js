@@ -3,19 +3,19 @@
 import Requests from "../utils/requests"
 const axios = Requests.getAxios()
 
+export const getUsers = () => {
+  return axios.get('/api/users').then((response) => response.data)
+}
 
-export default class UsersService {
-  static getUsers () {
-    return axios.get('/api/users')
-  }
-  static updateUser (userId, user) {
-    return axios.put(`/api/users/${userId}`, user)
-  }
-  static createUser (user) {
-    // temp hack until we move users into users
-    return axios.post(`/api/users`, { ...user, userId: 1 })
-  }
-  static deleteUser (userId) {
-    return axios.delete(`/api/users/${userId}`)
-  }
+export const updateUser = (user) => {
+  return axios.put(`/api/users/${user.id}`, user)
+}
+
+export const createUser = (user) => {
+  // temp hack until we move users into users
+  return axios.post(`/api/users`, { ...user, userId: 1 })
+}
+
+export const deleteUser = (user) => {
+  return axios.delete(`/api/users/${user.id}`)
 }

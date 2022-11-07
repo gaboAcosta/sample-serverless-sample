@@ -13,15 +13,15 @@ In order to run this project, you will need:
 
 1. cd backend
 2. cp .env.sample .env
-3. yarn
-4. yarn storage
-5. yarn migrate
-6. yarn start
+3. npm install
+4. npm run storage
+5. npm run migrate
+6. npm run start
 
 ### To start the UI:
 1. cd ui
-2. yarn
-3. yarn start
+2. npm install
+3. npm run start
 
 ### Login:
 By default authentication is disabled in your local, you can change this with the `DISABLE_LOGIN`

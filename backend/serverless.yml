@@ -6,7 +6,7 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   environment:
     DISABLE_LOGIN: ${env:DISABLE_LOGIN, 'false'}
     TOKEN_SECRET: ${env:TOKEN_SECRET}

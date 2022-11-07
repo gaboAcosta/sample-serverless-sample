@@ -2,15 +2,12 @@
 const { Sequelize } = require('sequelize');
 const { Umzug, SequelizeStorage } = require('umzug');
 
-const config = {
-  username: process.env.MYSQL_USER || 'admin',
-  password: process.env.MYSQL_PASSWORD || 'admin',
-  database: 'sample-serverless-project',
-  host: process.env.MYSQL_HOST || '127.0.0.1',
-  dialect: 'mysql',
-  port: 3306
-}
-const sequelize = new Sequelize(config);
+const config = require('./src/config/db')
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: config.host,
+  dialect: config.dialect
+});
+
 async function migrate () {
   // Checks migrations and run them if they are not already applied. To keep
   // track of the executed migrations, a table (and sequelize model) called SequelizeMeta

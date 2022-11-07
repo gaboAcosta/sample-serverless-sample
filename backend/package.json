@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node ./node_modules/.bin/serverless offline start --stage local",
     "deploy": "node ./node_modules/.bin/serverless deploy --stage",
-    "storage": "docker-compose  -p 'sample-serverless-project' up -d",
-    "storage:stop": "docker-compose  -p 'sample-serverless-project' stop",
-    "storage:destroy": "docker-compose  -p 'sample-serverless-project' down",
-    "migrate": "yarn wait-for-mysql && node bin/migrate.js",
+    "storage": "docker-compose up -d",
+    "storage:stop": "docker-compose stop",
+    "storage:destroy": "docker-compose down",
+    "migrate": "npm run wait-for-mysql && node bin/migrate.js",
     "wait-for-mysql": "wait-for-mysql --username=admin --password=admin -D 'sample-serverless-project'",
     "migrate:generate": "sequelize migration:generate --name"
   },
