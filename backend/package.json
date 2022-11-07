@@ -1,5 +1,5 @@
 {
-  "name": "enventario-backend",
+  "name": "sample-serverless-project-backend",
   "version": "1.0.0",
   "description": "A sample serverless project backend",
   "main": "handler.js",
@@ -10,7 +10,7 @@
     "storage:stop": "docker-compose stop",
     "storage:destroy": "docker-compose down",
     "migrate": "npm run wait-for-mysql && node bin/migrate.js",
-    "wait-for-mysql": "wait-for-mysql --username=admin --password=admin -D 'enventario_local'",
+    "wait-for-mysql": "wait-for-mysql --username=admin --password=admin -D 'sample-serverless-project'",
     "migrate:generate": "sequelize migration:generate --name"
   },
   "author": "",
